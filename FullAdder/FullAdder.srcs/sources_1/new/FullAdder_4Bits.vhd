@@ -54,52 +54,55 @@ architecture Behavioral of FullAdder_4Bits is
     signal cin_aux : STD_LOGIC_VECTOR (n downto 0):= (others => '0');
     
 begin
-    cin_aux(0) <= c_in;
+      cin_aux(0) <= c_in;
     
-    sumador: for i in 0 to n-1 generate
-        fa_i:  FullAdder
-         port map(
-          a => a(i),
-          b => b(i), 
-          c_in =>  cin_aux(i),
-          c_out =>  cin_aux(i+1),
-          suma => s(i)
-             );
-    end generate;
-    c_out <= cin_aux(n);
---    FA_1:FullAdder 
---    port map(
---        a => a(0),
---        b => b(0),
---        c_in => '0',
---        c_out => al_Cout(0),
---        suma => s(0)
---           );
+--    sumador: for i in 0 to n-1 generate
+--        fa_i:  FullAdder
+--         port map(
+--          a => a(i),
+--          b => b(i), 
+--          c_in =>  cin_aux(i),
+--          c_out =>  cin_aux(i+1),
+--          suma => s(i)
+--             );
+--    end generate;
+--    c_out <= cin_aux(n);
+
+    FA_1:FullAdder 
+    port map(
+        a => a(0),
+        b => b(0),
+        c_in => cin_aux(0),
+        c_out => cin_aux(1),
+        suma => s(0)
+           );
            
---    FA_2:FullAdder 
---               port map(
---                   a => a(1),
---                   b => b(1),
---                   c_in => al_Cout(0),
---                   c_out => al_Cout(1),
---                   suma => s(1)
---                      );
---    FA_3:FullAdder 
---    port map(
---    a => a(2),
---    b => b(2),
---    c_in => al_Cout(1),
---    c_out => al_Cout(2),
---    suma => s(2)
---    );
+    FA_2:FullAdder 
+              port map(
+                   a => a(1),
+                   b => b(1),
+                   c_in => cin_aux(1),
+                   c_out => cin_aux(2),
+                   suma => s(1)
+                      );
+    FA_3:FullAdder 
+    port map(
+    a => a(2),
+    b => b(2),
+    c_in => cin_aux(2),
+    c_out => cin_aux(3),
+    suma => s(2)
+    );
                       
---     FA_4:FullAdder 
---       port map(
---       a => a(3),
---       b => b(3),
---       c_in => al_Cout(2),
---       c_out => c_out,
---       suma => s(3)
---       );
+     FA_4:FullAdder 
+       port map(
+       a => a(3),
+       b => b(3),
+       c_in => cin_aux(3),
+       c_out => cin_aux(4),
+       suma => s(3)
+       );
        
+       
+       c_out <= cin_aux(4);
 end Behavioral;
