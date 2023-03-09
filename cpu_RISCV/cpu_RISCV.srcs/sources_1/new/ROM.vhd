@@ -80,17 +80,7 @@ architecture Behavioral of ROM is
          x"0060E213", --ori x4 x1 6 ori x4,x1,6
          x"00110113", --addi x2 x2 1    addi x2,x2,1
          x"0060F293", --andi x5 x1 6    andi x5,x1,6
-                
-     
-                         
-     
-     
-     
-                         
-           
-           
-           
-           
+               
            
            others =>x"00000000"
            );
