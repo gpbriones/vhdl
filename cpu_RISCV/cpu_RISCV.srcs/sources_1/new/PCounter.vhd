@@ -38,26 +38,27 @@ entity PCounter is
         clk,rst: in STD_LOGIC;
         we: in STD_LOGIC;
         pc_in : in STD_LOGIC_VECTOR (31 downto 0);
+        pc_current : in STD_LOGIC_VECTOR (31 downto 0);
         pc_out : out STD_LOGIC_VECTOR (31 downto 0)
     );
 end PCounter;
 
 architecture Behavioral of PCounter is   
-    signal current_pc: std_logic_vector( 31 downto 0) := X"00000000";
+    signal current_pc_tmp: std_logic_vector( 31 downto 0) := X"00000000";
     
     begin      
  
    process(clk,rst) 
     begin
         if rst = '1' then 
-            current_pc <=x"00000000"; 
+            current_pc_tmp <=x"00000000"; 
         else
             if clk'event and clk = '1' then
                 if we = '1' then
-                            current_pc <= std_logic_vector(unsigned(current_pc) + unsigned(pc_in));
+                            current_pc_tmp <= std_logic_vector(unsigned(pc_current) + unsigned(pc_in));
                 end if;
             end if;
         end if;  
    end process;   
-   pc_out <= current_pc;     
+   pc_out <= current_pc_tmp;     
 end Behavioral;

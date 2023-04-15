@@ -35,7 +35,7 @@ use ieee. std_logic_unsigned.all;
 
 entity IF_ID is
     generic(
-       n:integer :=32
+       n:integer :=64
    );
     Port ( we, clk, rst: in std_logic;
            d : in STD_LOGIC_VECTOR (n-1 downto 0);
@@ -48,15 +48,13 @@ begin
     process(clk, we,rst)
     begin
     if rst = '1' then 
-        q<=x"00000000";
+         q<=(others => '0');
     else
         if clk'event and clk='1' then
-            if we='1' then
-                q <= d;
-            else
-                q <= q;
-            end if;
-    end if;
+            q <= d;
+        else
+            q <= q;
         end if;
+    end if;
 end process;
 end Behavioral;

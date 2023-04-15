@@ -41,7 +41,7 @@ entity RegistroD is
     Port (
         we, clk, rst: in std_logic;
         d : in STD_LOGIC_VECTOR (n-1 downto 0);
-        q : inout STD_LOGIC_VECTOR (n-1 downto 0):= (others => '0'));
+        q : inout STD_LOGIC_VECTOR (n-1 downto 0));
 end RegistroD;
 
 architecture Behavioral of RegistroD is
@@ -50,14 +50,12 @@ process(clk, we,rst)
     begin
     if rst = '1' then 
         q<=x"00000000";
-    else
-        if clk'event and clk='1' then
+    elsif clk'event and clk='1' then
             if we='1' then
                 q <= d;
             else
                 q <= q;
             end if;
     end if;
-        end if;
 end process;
 end Behavioral;

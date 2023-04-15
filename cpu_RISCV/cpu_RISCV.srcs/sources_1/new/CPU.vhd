@@ -39,7 +39,7 @@ architecture Behavioral of CPU is
 --------------------------------------- 
 component IF_ID is
     generic(
-       n:integer :=32
+       n:integer :=64
    );
     Port ( d: in STD_LOGIC_VECTOR (n-1 downto 0);
            clk: in STD_LOGIC;
@@ -98,7 +98,7 @@ end component BancoRegistros;
 --------------------------------------- 
 component ID_EX is
     generic(
-       n:integer :=151
+       n:integer :=184
    );
     Port ( d: in STD_LOGIC_VECTOR (n-1 downto 0);
            clk: in STD_LOGIC;
@@ -118,6 +118,7 @@ component PCounter is
         clk,rst: in STD_LOGIC;
         we: in STD_LOGIC;
         pc_in : in STD_LOGIC_VECTOR (31 downto 0);
+        pc_current : in STD_LOGIC_VECTOR (31 downto 0);
         pc_out : out STD_LOGIC_VECTOR (31 downto 0)
     );
 end component PCounter;
@@ -189,7 +190,7 @@ end component ALU_CONTROL;
 --------------------------------------- 
 component EX_MEM is
     generic(
-       n:integer :=132
+       n:integer :=197
    );
     Port ( we, clk, rst: in std_logic;
            d : in STD_LOGIC_VECTOR (n-1 downto 0);
@@ -218,7 +219,7 @@ end component RAM_32X8;
 --------------------------------------- 
 component MEM_WB is
     generic(
-       n:integer :=65
+       n:integer :=66
    );
     Port ( we, clk, rst: in std_logic;
            d : in STD_LOGIC_VECTOR (n-1 downto 0);
@@ -229,7 +230,13 @@ end component MEM_WB;
 ---------------------------------------
 ---seniales
 ---------------------------------------
-    signal add_rom: STD_LOGIC_VECTOR (31 downto 0);
+    signal signal_add_rom: STD_LOGIC_VECTOR (31 downto 0);
+    signal signal_add_rom_to_IF: STD_LOGIC_VECTOR (31 downto 0):=(others => '0');
+    signal signal_add_rom_from_ID: STD_LOGIC_VECTOR (31 downto 0):=(others => '0');
+    signal signal_add_rom_from_MEM: STD_LOGIC_VECTOR (31 downto 0):=(others => '0');
+    signal signal_add_rom_from_IE: STD_LOGIC_VECTOR (31 downto 0):=(others => '0');
+    
+    
     signal to_mux_RA: STD_LOGIC_VECTOR (4 downto 0);
     signal to_mux_RB: STD_LOGIC_VECTOR (4 downto 0);
     signal to_banco_add: STD_LOGIC_VECTOR (4 downto 0);
@@ -273,6 +280,10 @@ end component MEM_WB;
     --seniales de control:
     --senial de control para habilitar/deshabilitar banco de registros
     signal ctr_r_we: STD_LOGIC;
+    signal ctr_r_we_IDEX: STD_LOGIC;
+    signal ctr_r_we_EXMEM: STD_LOGIC;
+    signal ctr_r_we_MEM_WS: STD_LOGIC;
+    
     --signal ctr_r_we_IDEX: STD_LOGIC;
     signal ctr_to_rd_data: STD_LOGIC;
     signal ctr_to_rd_data_IDEX: STD_LOGIC;
@@ -302,7 +313,11 @@ end component MEM_WB;
     
     
     signal senial_mux2x1_salto_out_to_mux_suma_in: STD_LOGIC_VECTOR (n-1 downto 0);
-    signal signal_mux_suma_to_pc_counter: STD_LOGIC_VECTOR (n-1 downto 0);
+    
+    
+    signal signal_from_mux_suma_to_EX: STD_LOGIC_VECTOR (n-1 downto 0);
+    signal signal_from_mux_suma_MEM_to_pcounter: STD_LOGIC_VECTOR (n-1 downto 0):=(others => '0');
+
     
     
     
@@ -324,7 +339,7 @@ begin
     -----------------------------------
     conexion_rom:ROM 
         port map(
-            addr => add_rom,
+            addr => signal_add_rom_to_IF,
             --salida 32 bits: 5 bits hacia mux de lectura de registro RA
             data_o(19 downto 15) => to_mux_RA,
             --salida 32 bits: 5 bits hacia mux de lectura de registro RB
@@ -337,14 +352,38 @@ begin
             data_o(31 downto 25) => to_7b
                );
      
-     conexion_pc:  PCounter  
+     conexion_pc: PCounter  
         port map(
             clk => clk,
             rst =>rst,
             we =>'1',
-            pc_in => signal_mux_suma_to_pc_counter,
-            pc_out => add_rom 
+            --  pc_in => signal_from_mux_suma_MEM_to_pcounter,
+            pc_in => signal_from_mux_suma_to_EX,
+            pc_current => signal_add_rom_to_IF,
+            pc_out => signal_add_rom_to_IF 
        );
+       
+       -------mux de suma para salto en pc counter  
+       --Este mux pasa a la etapa de Ejecucion para aplicar el incremento
+       --al contador del programa en la siguiente etapa (Mem), esto para pipeline.    
+       conexion_mux_su:  MUX_2X1
+       port map(
+        a => x"00000001",
+        b => senial_mux2x1_salto_out_to_mux_suma_in,
+        sel =>al_and_out,
+        z => signal_from_mux_suma_to_EX
+        );
+               
+       conexion_mux_salto:  MUX_2X1
+       port map(
+        a => x"00000000",
+        b => al_extensor_31_25_y_11_7_EXMEM,
+        sel =>al_and_out,
+        z => senial_mux2x1_salto_out_to_mux_suma_in
+        );          
+                 
+       
+       
        
      ---------------
      ---------------
@@ -358,6 +397,7 @@ begin
                 d(19 downto 15) => to_mux_RA,
                 d(24 downto 20) => to_mux_RB,
                 d(31 downto 25) => to_7b,
+                d(63 downto 32) => signal_add_rom_to_IF,
                 clk => clk,
                 we => '1',
                 rst => rst, 
@@ -366,7 +406,8 @@ begin
                 q(14 downto 12) => al_func3_IFID,
                 q(19 downto 15) => to_mux_RA_IFID,
                 q(24 downto 20) => to_mux_RB_IFID,
-                q(31 downto 25) => to_7b_IFID
+                q(31 downto 25) => to_7b_IFID,
+                q(63 downto 32) => signal_add_rom_from_ID
              );
                
                
@@ -435,6 +476,8 @@ begin
             d(135) =>ctr_alu_source,
             d(138 downto 136) =>al_func3_IFID,
             d(150 downto 139) =>to_12b,
+            d(182 downto 151) =>signal_add_rom_from_ID,
+            d(183) => ctr_r_we, --señal para retrazar writeEnable
             --d(151) =>ctr_r_we,
             
             clk => clk,
@@ -453,7 +496,9 @@ begin
             
             q(135) =>ctr_alu_source_IDEX,
             q(138 downto 136) =>al_func3_IDEX,
-            q(150 downto 139) =>to_12b_IDEX
+            q(150 downto 139) =>to_12b_IDEX,
+            q(182 downto 151) =>signal_add_rom_from_IE,
+            q(183) => ctr_r_we_IDEX --señal para retrazar writeEnable
             --q(151) =>ctr_r_we_IDEX
             );
      
@@ -485,8 +530,9 @@ begin
             d(129) =>ctr_to_rd_data_IDEX,
             d(130) =>ctr_to_wr_data_IDEX,
             d(131) =>ctr_to_reg_dst_IDEX,
-            
-            
+            d(163 downto 132) => signal_from_mux_suma_to_EX,
+            d(195 downto 164) =>signal_add_rom_from_IE,
+            d(196) => ctr_r_we_IDEX, --señal para retrazar writeEnable
             clk => clk,
             we => '1',
             rst => rst, 
@@ -498,7 +544,10 @@ begin
             q(128) =>ctr_jump_EXMEM,
             q(129) =>ctr_to_rd_data_EXMEM,
             q(130) =>ctr_to_wr_data_EXMEM,
-            q(131) =>ctr_to_reg_dst_EXMEM
+            q(131) =>ctr_to_reg_dst_EXMEM,
+            q(163 downto 132) => signal_from_mux_suma_MEM_to_pcounter,
+            q(195 downto 164) =>signal_add_rom_from_MEM,
+            q(196) => ctr_r_we_EXMEM --señal para retrazar writeEnable
                  );     
     conexion_actl:  ALU_CONTROL
                      port map(
@@ -529,13 +578,14 @@ pipeline_MEM_WB:MEM_WB
         d(31 downto 0) => senial_mem_p_to_m2,
         d(63 downto 32) => senial_alu_to_m2_in_EXMEM,
         d(64) => ctr_to_reg_dst_EXMEM,
-                       
+        d(65) => ctr_r_we_EXMEM,              
         clk => clk,
         we => '1',
         rst => rst, 
         q(31 downto 0) => senial_mem_p_to_m2_MEM_WB,
         q(63 downto 32) => senial_alu_to_m2_in_MEM_WB,
-        q(64) => ctr_to_reg_dst_MEM_WB
+        q(64) => ctr_to_reg_dst_MEM_WB,
+        q(65) => ctr_r_we_MEM_WS
         ); 
                                    
     conexion_mux_m2:  MUX_2X1
@@ -554,21 +604,6 @@ pipeline_MEM_WB:MEM_WB
 --------and para activar el mux de salto
 al_and_out <= ctr_jump_EXMEM and senial_alu_to_m2_in_EXMEM(0);  
 
-conexion_mux_salto:  MUX_2X1
-           port map(
-             a => x"00000000",
-             b => al_extensor_31_25_y_11_7_EXMEM,
-             sel =>al_and_out,
-             z => senial_mux2x1_salto_out_to_mux_suma_in
-          );          
-          
--------mux de suma para salto en pc counter      
-conexion_mux_su:  MUX_2X1
-                     port map(
-                       a => x"00000001",
-                       b => senial_mux2x1_salto_out_to_mux_suma_in,
-                       sel =>al_and_out,
-                       z => signal_mux_suma_to_pc_counter
-                    );         
+        
      
 end Behavioral;

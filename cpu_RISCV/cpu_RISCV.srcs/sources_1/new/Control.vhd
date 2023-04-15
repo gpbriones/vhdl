@@ -65,16 +65,28 @@ architecture Behavioral of Control is
                 r_wr <= '0';
                 --sign_or_zero <= '1';
              else 
+             
+              reg_dst <= '0';
+                                    --mem_to_reg <= "00";
+                                    ctr_alu <= "000";
+                                    jump <= '0';
+            --                        branch <= '0';
+                                    m_rd <= '0';
+                                    m_wr <= '0';
+                                    alu_src <= '0';
+                                    r_wr <= '0';
+                                    
+                                    
                 case opcode is
                     when "0110011" => -- tipo R
-                        reg_dst <= '0';
+                      --  reg_dst <= '0';
                         --mem_to_reg <= "00";
-                        ctr_alu <= "000";
-                        jump <= '0';
+                        --ctr_alu <= "000";
+                       -- jump <= '0';
 --                        branch <= '0';
-                        m_rd <= '0';
-                        m_wr <= '0';
-                        alu_src <= '0';
+                       -- m_rd <= '0';
+                        --m_wr <= '0';
+                        --alu_src <= '0';
                         r_wr <= '1';
 --                        sign_or_zero <= '1';
                     when "0010011" => -- tipo I
@@ -82,10 +94,10 @@ architecture Behavioral of Control is
    --                     mem_to_reg <= "00";
                           ctr_alu <= "001";
      --                   alu_op <= "10";
-                          jump <= '0';
+                          --jump <= '0';
 --                        branch <= '0';
-                          m_rd <= '0';
-                          m_wr <= '0';
+                         -- m_rd <= '0';
+                         -- m_wr <= '0';
                           alu_src <= '1';
                           r_wr <= '1';
 --                        sign_or_zero <= '0';

@@ -35,7 +35,9 @@ use ieee. std_logic_unsigned.all;
 
 entity EX_MEM is
     generic(
-       n:integer :=132
+        --Senales:
+        --
+       n:integer :=196
    );
     Port ( we, clk, rst: in std_logic;
            d : in STD_LOGIC_VECTOR (n-1 downto 0);
@@ -51,12 +53,10 @@ begin
         q<=(others => '0');
     else
         if clk'event and clk='1' then
-            if we='1' then
                 q <= d;
             else
                 q <= q;
-            end if;
-    end if;
         end if;
+     end if;
 end process;
 end Behavioral;
