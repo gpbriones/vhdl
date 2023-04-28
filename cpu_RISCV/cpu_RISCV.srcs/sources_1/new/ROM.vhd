@@ -70,6 +70,7 @@ architecture Behavioral of ROM is
          x"0020C1B3", --xor x3 x1 x2    xor x3,x1,x2
          x"40218233", --sub x4 x3 x2    sub x4,x3,x2
          x"0020E233", --or x4 x1 x2 or x4,x1,x2
+         x"00208123", --sb x2 2(x1) sb x2, 2(x1)
          x"0020F2B3", --and x5 x1 x2    and x5,x1,x2
          x"00219333", --sll x6 x3 x2    sll x6,x3,x2
          x"0021D3B3", --srl x7 x3 x2    srl x7,x3,x2

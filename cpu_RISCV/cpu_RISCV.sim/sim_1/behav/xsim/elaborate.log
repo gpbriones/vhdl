@@ -1,0 +1,41 @@
+Vivado Simulator v2022.2
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_cpu_behav xil_defaultlib.tb_cpu -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.std_logic_signed
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ROM [rom_default]
+Compiling architecture behavioral of entity xil_defaultlib.PCounter [pcounter_default]
+Compiling architecture behavioral of entity xil_defaultlib.IF_ID [if_id_default]
+Compiling architecture behavioral of entity xil_defaultlib.DEMUX_32X1 [demux_32x1_default]
+Compiling architecture behavioral of entity xil_defaultlib.RegistroD [registrod_default]
+Compiling architecture behavioral of entity xil_defaultlib.BancoRegistros [bancoregistros_default]
+Compiling architecture behavioral of entity xil_defaultlib.MUX_32X1 [mux_32x1_default]
+Compiling architecture behavioral of entity xil_defaultlib.Control [control_default]
+Compiling architecture behavioral of entity xil_defaultlib.ID_EX [id_ex_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux_nbits [mux_nbits_default]
+Compiling architecture behavioral of entity xil_defaultlib.Mux_4_to_1_nbits [mux_4_to_1_nbits_default]
+Compiling architecture behavioral of entity xil_defaultlib.CI_32bits [ci_32bits_default]
+Compiling architecture behavioral of entity xil_defaultlib.UA [ua_default]
+Compiling architecture behavioral of entity xil_defaultlib.UShifts [ushifts_default]
+Compiling architecture behavioral of entity xil_defaultlib.U_Branches [u_branches_default]
+Compiling architecture behavioral of entity xil_defaultlib.MUX_5X1_32 [mux_5x1_32_default]
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.MUX_2X1 [mux_2x1_default]
+Compiling architecture behavioral of entity xil_defaultlib.EX_MEM [ex_mem_default]
+Compiling architecture behavioral of entity xil_defaultlib.ALU_CONTROL [alu_control_default]
+Compiling architecture behavioral of entity xil_defaultlib.RAM_32X8 [ram_32x8_default]
+Compiling architecture behavioral of entity xil_defaultlib.MEM_WB [mem_wb_default]
+Compiling architecture behavioral of entity xil_defaultlib.CPU [cpu_default]
+Compiling architecture behavioral of entity xil_defaultlib.tb_cpu
+Built simulation snapshot tb_cpu_behav

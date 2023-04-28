@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+ERROR: Index 32 out of bound 0 to 31
+Time: 570 ns  Iteration: 3  Process: /tb_cpu/mapeo_cpu/conexion_rom/line__88
+  File: C:/Users/gustavo/github/cpu_RISCV/cpu_RISCV.srcs/sources_1/new/ROM.vhd
+
+HDL Line: C:/Users/gustavo/github/cpu_RISCV/cpu_RISCV.srcs/sources_1/new/ROM.vhd:88

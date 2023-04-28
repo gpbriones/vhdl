@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_pipeline_fa_behav/xsimk.exe -simmode gui -wdb tb_pipeline_fa_behav.wdb -simrunnum 0 -socket 60538
+Design successfully loaded
+Design Loading Memory Usage: 7388 KB (Peak: 7388 KB)
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 7944 KB (Peak: 7944 KB)
+Simulation CPU Usage: 139 ms

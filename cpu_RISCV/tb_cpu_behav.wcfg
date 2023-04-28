@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_cpu_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="tb_cpu" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="122.601 ns"></ZoomEndTime>
+      <Cursor1Time time="8.500 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="197"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="47" />
+   <wvobject fp_name="/tb_cpu/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/periodo" type="other">
+      <obj_property name="ElementShortName">periodo</obj_property>
+      <obj_property name="ObjectShortName">periodo</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider4">
+      <obj_property name="label">ROM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_rom/addr" type="array">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_rom/data_o" type="array">
+      <obj_property name="ElementShortName">data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_rom/n" type="other">
+      <obj_property name="ElementShortName">n</obj_property>
+      <obj_property name="ObjectShortName">n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_rom/memoria" type="array">
+      <obj_property name="ElementShortName">memoria[0:31][31:0]</obj_property>
+      <obj_property name="ObjectShortName">memoria[0:31][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider9">
+      <obj_property name="label">Registros</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/r_we" type="logic">
+      <obj_property name="ElementShortName">r_we</obj_property>
+      <obj_property name="ObjectShortName">r_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/adr" type="array">
+      <obj_property name="ElementShortName">adr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/d" type="array">
+      <obj_property name="ElementShortName">d[31:0]</obj_property>
+      <obj_property name="ObjectShortName">d[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/q" type="array">
+      <obj_property name="ElementShortName">q[1023:0]</obj_property>
+      <obj_property name="ObjectShortName">q[1023:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/addr_we" type="array">
+      <obj_property name="ElementShortName">addr_we[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_we[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/al_d" type="array">
+      <obj_property name="ElementShortName">al_d[31:0]</obj_property>
+      <obj_property name="ObjectShortName">al_d[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_banco_registros/n" type="other">
+      <obj_property name="ElementShortName">n</obj_property>
+      <obj_property name="ObjectShortName">n</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider19">
+      <obj_property name="label">ALU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/a" type="array">
+      <obj_property name="ElementShortName">a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/b" type="array">
+      <obj_property name="ElementShortName">b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/s" type="array">
+      <obj_property name="ElementShortName">s[5:0]</obj_property>
+      <obj_property name="ObjectShortName">s[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/c_in" type="logic">
+      <obj_property name="ElementShortName">c_in</obj_property>
+      <obj_property name="ObjectShortName">c_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/c_out" type="logic">
+      <obj_property name="ElementShortName">c_out</obj_property>
+      <obj_property name="ObjectShortName">c_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/z" type="array">
+      <obj_property name="ElementShortName">z[31:0]</obj_property>
+      <obj_property name="ObjectShortName">z[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/al_zl" type="array">
+      <obj_property name="ElementShortName">al_zl[31:0]</obj_property>
+      <obj_property name="ObjectShortName">al_zl[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/al_za" type="array">
+      <obj_property name="ElementShortName">al_za[31:0]</obj_property>
+      <obj_property name="ObjectShortName">al_za[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/al_zus" type="array">
+      <obj_property name="ElementShortName">al_zus[31:0]</obj_property>
+      <obj_property name="ObjectShortName">al_zus[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/al_comp" type="array">
+      <obj_property name="ElementShortName">al_comp[31:0]</obj_property>
+      <obj_property name="ObjectShortName">al_comp[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/al_branch" type="array">
+      <obj_property name="ElementShortName">al_branch[31:0]</obj_property>
+      <obj_property name="ObjectShortName">al_branch[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/al_jump" type="array">
+      <obj_property name="ElementShortName">al_jump[31:0]</obj_property>
+      <obj_property name="ObjectShortName">al_jump[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_alu/n" type="other">
+      <obj_property name="ElementShortName">n</obj_property>
+      <obj_property name="ObjectShortName">n</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider33">
+      <obj_property name="label">PC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_pc/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_pc/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_pc/we" type="logic">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_pc/pc_in" type="array">
+      <obj_property name="ElementShortName">pc_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_pc/pc_out" type="array">
+      <obj_property name="ElementShortName">pc_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_pc/current_pc" type="array">
+      <obj_property name="ElementShortName">current_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">current_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider40">
+      <obj_property name="label">RAM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_ram/addr" type="array">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_ram/we" type="logic">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_ram/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_ram/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_ram/data_i" type="array">
+      <obj_property name="ElementShortName">data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_ram/data_o" type="array">
+      <obj_property name="ElementShortName">data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/mapeo_cpu/conexion_ram/rammemory" type="array">
+      <obj_property name="ElementShortName">rammemory[0:1023][31:0]</obj_property>
+      <obj_property name="ObjectShortName">rammemory[0:1023][31:0]</obj_property>
+      <obj_property name="Reversed">false</obj_property>
+   </wvobject>
+</wave_config>

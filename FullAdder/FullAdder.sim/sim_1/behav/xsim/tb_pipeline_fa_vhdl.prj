@@ -1,0 +1,12 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../FullAdder.srcs/sources_1/new/FullAdder.vhd" \
+"../../../../FullAdder.srcs/sources_1/new/FullAdder_4Bits.vhd" \
+"../../../../FullAdder.srcs/sources_1/new/PipeLine4FA4B.vhd" \
+"../../../../FullAdder.srcs/sources_1/new/Registro1B.vhd" \
+"../../../../FullAdder.srcs/sources_1/new/flipFlop_D.vhd" \
+"../../../../FullAdder.srcs/sources_1/new/mux_case.vhd" \
+"../../../../FullAdder.srcs/sim_1/new/tb_pipeline_fa.vhd" \
+
+# Do not sort compile order
+nosort

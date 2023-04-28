@@ -1,0 +1,29 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../cpu_RISCV.srcs/sources_1/new/ALU.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/ALU_CONTROL.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/BancoRegistros.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/CI_32bits.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/CPU.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/Control.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/DEMUX_32X1.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/EX_MEM.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/ID_EX.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/IF_ID.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/MEM_WB.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/MUX_2X1.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/MUX_32X1.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/MUX_5x1_32.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/Mux_4_to_1_nbits.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/PCounter.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/RAM_32X8.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/ROM.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/RegistroD.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/UA.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/UShifts.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/U_Branches.vhd" \
+"../../../../cpu_RISCV.srcs/sources_1/new/mux_nbits.vhd" \
+"../../../../cpu_RISCV.srcs/sim_1/new/tb_cpu.vhd" \
+
+# Do not sort compile order
+nosort

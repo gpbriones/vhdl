@@ -11,7 +11,13 @@ entity CPU is
        n:integer :=32
   );
     Port ( 
-    clk, rst : in STD_LOGIC);
+    clk, rst : in STD_LOGIC;
+    --hacia cache
+    adreess_to_cache: out STD_LOGIC_VECTOR (n-1 downto 0);
+    we_to_cache: out std_logic;
+    data_from_rb_to_cache: out std_logic_vector(31 downto 0);
+    data_from_cache_to_m2: in std_logic_vector(31 downto 0));
+    
 end CPU;
 
 architecture Behavioral of CPU is
@@ -305,15 +311,15 @@ begin
                        ope_out => senial_selector_to_alu
                     );
     
-    conexion_ram:  RAM_32X8
-                    port map(
-                       addr => senial_alu_to_m2_in  ,
-                       we => ctr_to_wr_data,
-                       clk => clk,
-                       rst => rst,
-                       data_i => senial_muxRB_to_alu,
-                       data_o => senial_mem_p_to_m2
-                       ); 
+    --conexion_ram:  RAM_32X8
+    --                port map(
+    --                   addr => senial_alu_to_m2_in  ,
+    --                   we => ctr_to_wr_data,
+    --                   clk => clk,
+    --                   rst => rst,
+    --                   data_i => senial_muxRB_to_alu,
+    --                   data_o => senial_mem_p_to_m2
+    --                   ); 
     
     conexion_mux_m2:  MUX_2X1
         port map(
@@ -342,5 +348,15 @@ conexion_mux_su:  MUX_2X1
                        sel =>al_and_out,
                        z => signal_mux_suma_to_pc_counter
                     );         
-     
+   --salida de memoria de datos para cache 
+   --direccion desde risc  hacia cache             
+   adreess_to_cache <= senial_alu_to_m2_in;
+   --write enable para habilitar escritura en memoria de datos
+   --primero se buscara en cache si esta ya no va a memoria de datos
+   --si no esta escribe en memoria de datos y en cache
+   we_to_cache <= ctr_to_wr_data;
+   --data desde riscc  hacia cache
+   data_from_rb_to_cache <= senial_muxRB_to_alu;
+   --data desde cache o memeoria de datos hacia risc
+   senial_mem_p_to_m2<= data_from_cache_to_m2;
 end Behavioral;
